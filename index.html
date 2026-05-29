@@ -19,37 +19,17 @@
     <meta property="og:image" content="portier.jpeg" />
     <meta property="og:locale" content="fr_FR" />
 
-    <!-- SCHEMA.ORG LOCAL BUSINESS -->
+    <!-- SCHEMA.ORG -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "TaxiService",
-      "name": "Skmobility",
-      "description": "Service de chauffeur privé VTC à Cambrai et dans le Nord. Navettes aéroports, transferts longue distance, événements.",
-      "url": "https://skmobility.fr",
-      "telephone": "+33759630937",
-      "email": "hamzasekrafi32@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Cambrai",
-        "addressLocality": "Cambrai",
-        "postalCode": "59400",
-        "addressRegion": "Hauts-de-France",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 50.1764,
-        "longitude": 3.2336
-      },
-      "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
-      "priceRange": "€€",
-      "areaServed": ["Cambrai", "Caudry", "Solesmes", "Douai", "Valenciennes", "Arras", "Maubeuge"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "47"
-      }
+      "@context":"https://schema.org","@type":"TaxiService","name":"Skmobility",
+      "description":"Chauffeur privé VTC à Cambrai et dans le Nord. Navettes aéroports, transferts, événements.",
+      "url":"https://skmobility.fr","telephone":"+33759630937","email":"hamzasekrafi32@gmail.com",
+      "address":{"@type":"PostalAddress","addressLocality":"Cambrai","postalCode":"59400","addressCountry":"FR"},
+      "geo":{"@type":"GeoCoordinates","latitude":50.1764,"longitude":3.2336},
+      "openingHours":"Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59","priceRange":"€€",
+      "areaServed":["Cambrai","Caudry","Solesmes","Douai","Valenciennes","Arras","Maubeuge"],
+      "aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"47"}
     }
     </script>
 
@@ -58,12 +38,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- LEAFLET -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <link rel="icon" type="image/png" href="IMG_7756.png" />
     <link rel="stylesheet" href="skmobility.css" />
   </head>
 
   <body>
-
     <!-- PRELOADER -->
     <div id="preloader">
       <img class="preloader-logo" src="IMG_7756.png" alt="Skmobility chauffeur VTC Cambrai" />
@@ -93,6 +74,7 @@
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#aeroports">Aéroports</a></li>
+          <li><a href="professionnels.html">Professionnels</a></li>
           <li><a href="#simulateur">Tarifs</a></li>
           <li><a href="#reservation">Réserver</a></li>
         </ul>
@@ -105,10 +87,9 @@
 
     <main>
 
-      <!-- ===================== HERO ===================== -->
+      <!-- HERO -->
       <section class="hero" id="accueil">
         <div class="hero-overlay"></div>
-        <!-- Ajoutez hero-video.mp4 dans ce dossier pour activer la vidéo -->
         <video class="hero-video" autoplay muted loop playsinline poster="portier.jpeg">
           <source src="hero-video.mp4" type="video/mp4" />
         </video>
@@ -130,7 +111,7 @@
         </div>
       </section>
 
-      <!-- ===================== STATS ===================== -->
+      <!-- STATS -->
       <section class="section-stats">
         <div class="stat reveal" data-delay="0">
           <div class="stat-value"><span class="stat-number" data-count="500">0</span><span class="stat-suffix">+</span></div>
@@ -150,93 +131,122 @@
         </div>
       </section>
 
-      <!-- ===================== SERVICES ===================== -->
+      <!-- SERVICES -->
       <section class="section" id="services">
         <p class="section-label reveal">Ce que nous proposons</p>
-        <h2 class="section-title reveal">Nos véhicules & occasions</h2>
+        <h2 class="section-title reveal">Nos véhicules &amp; occasions</h2>
         <p class="section-sub reveal">Nous nous adaptons à chaque demande — anniversaire, mariage, baptême, transport professionnel ou personnel.</p>
-
-        <!-- Véhicules -->
         <div class="vehicles-grid">
+
+          <!-- VTC Confort -->
           <div class="vehicle-card reveal" data-delay="0">
-            <div class="vehicle-icon"><i class="fa-solid fa-car"></i></div>
-            <h3>Berline Standard</h3>
-            <p>Confortable et efficace pour vos trajets quotidiens et professionnels. Jusqu'à 4 passagers.</p>
-            <span class="vehicle-price">À partir de 1,80€/km</span>
+            <div class="vehicle-card-inner">
+              <div class="vehicle-badge">Disponible</div>
+              <div class="vehicle-icon-wrap">
+                <i class="fa-solid fa-car"></i>
+              </div>
+              <div class="vehicle-body">
+                <h3>VTC Confort</h3>
+                <p>Véhicule confortable, propre et élégant, idéal pour tous vos trajets du quotidien, transferts gares et aéroports.</p>
+              </div>
+              <div class="vehicle-footer">
+                <div class="vehicle-tags">
+                  <span>1–4 passagers</span>
+                  <span>Climatisé</span>
+                  <span>24h/24</span>
+                </div>
+                <a href="#reservation" class="vehicle-btn">Réserver</a>
+              </div>
+            </div>
           </div>
+
+          <!-- VTC Spacieux -->
           <div class="vehicle-card reveal" data-delay="1">
-            <div class="vehicle-icon gold"><i class="fa-solid fa-car-side"></i></div>
-            <h3>Berline Haut de Gamme</h3>
-            <p>Mercedes, BMW ou équivalent. Pour vos événements et déplacements VIP. Jusqu'à 4 passagers.</p>
-            <span class="vehicle-price">À partir de 2,30€/km</span>
+            <div class="vehicle-card-inner">
+              <div class="vehicle-badge">Disponible</div>
+              <div class="vehicle-icon-wrap">
+                <i class="fa-solid fa-van-shuttle"></i>
+              </div>
+              <div class="vehicle-body">
+                <h3>VTC Spacieux</h3>
+                <p>Parfait pour les groupes, familles et bagages volumineux. Confort optimal pour les longs trajets.</p>
+              </div>
+              <div class="vehicle-footer">
+                <div class="vehicle-tags">
+                  <span>1–7 passagers</span>
+                  <span>Grand coffre</span>
+                  <span>Longue distance</span>
+                </div>
+                <a href="#reservation" class="vehicle-btn">Réserver</a>
+              </div>
+            </div>
           </div>
-          <div class="vehicle-card reveal" data-delay="2">
-            <div class="vehicle-icon"><i class="fa-solid fa-van-shuttle"></i></div>
-            <h3>Van XL / Monospace</h3>
-            <p>Idéal pour les groupes, familles et bagages volumineux. Jusqu'à 7 passagers.</p>
-            <span class="vehicle-price">À partir de 2,80€/km</span>
+
+          <!-- Service Luxe — Bientôt -->
+          <div class="vehicle-card vehicle-locked reveal" data-delay="2">
+            <div class="vehicle-card-inner">
+              <div class="vehicle-badge badge-soon"><i class="fa-solid fa-lock"></i> Bientôt disponible</div>
+              <div class="vehicle-icon-wrap locked">
+                <i class="fa-solid fa-gem"></i>
+              </div>
+              <div class="vehicle-body">
+                <h3>Service Luxe</h3>
+                <p>Expérience premium avec véhicules haut de gamme et prestations VIP. Disponible prochainement.</p>
+              </div>
+              <div class="vehicle-footer">
+                <div class="vehicle-tags">
+                  <span>Premium</span>
+                  <span>VIP</span>
+                  <span>Sur demande</span>
+                </div>
+                <button class="vehicle-btn btn-locked" disabled>
+                  <i class="fa-solid fa-lock"></i> Indisponible
+                </button>
+              </div>
+            </div>
+            <div class="vehicle-lock-overlay">
+              <i class="fa-solid fa-lock"></i>
+              <span>Bientôt disponible</span>
+            </div>
           </div>
+
         </div>
-
-        <!-- Occasions -->
-        <h2 class="section-title reveal" style="margin-top: 80px;">On s'adapte à votre événement</h2>
-        <p class="section-sub reveal">Que ce soit un anniversaire, un mariage, un baptême ou un déplacement d'affaires — nous personnalisons le service selon vos souhaits.</p>
-
+        <h2 class="section-title reveal" style="margin-top:80px">On s'adapte à votre événement</h2>
+        <p class="section-sub reveal">Anniversaire, mariage, baptême ou déplacement professionnel — nous personnalisons le service selon vos souhaits.</p>
         <div class="events-grid">
-          <div class="event-card reveal" data-delay="0">
-            <i class="fa-solid fa-champagne-glasses"></i>
-            <h3>Mariage</h3>
-            <p>Décoration, ponctualité et discrétion pour votre grand jour.</p>
-          </div>
-          <div class="event-card reveal" data-delay="1">
-            <i class="fa-solid fa-cake-candles"></i>
-            <h3>Anniversaire</h3>
-            <p>Arrivée en grande classe pour fêter vos moments inoubliables.</p>
-          </div>
-          <div class="event-card reveal" data-delay="2">
-            <i class="fa-solid fa-baby"></i>
-            <h3>Baptême</h3>
-            <p>Transport familial confortable et sécurisé pour toute la famille.</p>
-          </div>
-          <div class="event-card reveal" data-delay="3">
-            <i class="fa-solid fa-briefcase"></i>
-            <h3>Professionnel</h3>
-            <p>Rendez-vous d'affaires, séminaires, mise à disposition journée.</p>
-          </div>
+          <div class="event-card reveal" data-delay="0"><i class="fa-solid fa-champagne-glasses"></i><h3>Mariage</h3><p>Décoration, ponctualité et discrétion pour votre grand jour.</p></div>
+          <div class="event-card reveal" data-delay="1"><i class="fa-solid fa-cake-candles"></i><h3>Anniversaire</h3><p>Arrivée en grande classe pour fêter vos moments inoubliables.</p></div>
+          <div class="event-card reveal" data-delay="2"><i class="fa-solid fa-baby"></i><h3>Baptême</h3><p>Transport familial confortable et sécurisé pour toute la famille.</p></div>
+          <div class="event-card reveal" data-delay="3"><i class="fa-solid fa-briefcase"></i><h3>Professionnel</h3><p>Rendez-vous d'affaires, séminaires, mise à disposition journée.</p></div>
         </div>
       </section>
 
-      <!-- ===================== AÉROPORTS ===================== -->
+      <!-- AÉROPORTS -->
       <section class="section section-dark" id="aeroports">
         <p class="section-label reveal">Depuis Cambrai (59400)</p>
         <h2 class="section-title light reveal">Navettes aéroports</h2>
         <p class="section-sub light reveal">Transferts ponctuels et confortables vers les 4 principaux aéroports. Prise en charge à domicile.</p>
-
         <div class="airports-grid">
           <div class="airport-card reveal" data-delay="0">
-            <div class="airport-flag">🇫🇷</div>
-            <h3>Paris CDG</h3>
+            <div class="airport-flag">🇫🇷</div><h3>Paris CDG</h3>
             <p class="airport-distance"><i class="fa-solid fa-route"></i> ~255 km</p>
             <p>Aéroport Charles-de-Gaulle — Liaison directe depuis Cambrai et le 59.</p>
             <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
           </div>
           <div class="airport-card reveal" data-delay="1">
-            <div class="airport-flag">🇧🇪</div>
-            <h3>Bruxelles-Zaventem</h3>
+            <div class="airport-flag">🇧🇪</div><h3>Bruxelles-Zaventem</h3>
             <p class="airport-distance"><i class="fa-solid fa-route"></i> ~125 km</p>
             <p>Aéroport international de Bruxelles — idéal pour les vols en Belgique et Europe.</p>
             <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
           </div>
           <div class="airport-card reveal" data-delay="2">
-            <div class="airport-flag">🇧🇪</div>
-            <h3>Charleroi</h3>
+            <div class="airport-flag">🇧🇪</div><h3>Charleroi</h3>
             <p class="airport-distance"><i class="fa-solid fa-route"></i> ~105 km</p>
             <p>Brussels South Charleroi Airport — vols low-cost au départ du Hainaut.</p>
             <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
           </div>
           <div class="airport-card reveal" data-delay="3">
-            <div class="airport-flag">🇫🇷</div>
-            <h3>Lille-Lesquin</h3>
+            <div class="airport-flag">🇫🇷</div><h3>Lille-Lesquin</h3>
             <p class="airport-distance"><i class="fa-solid fa-route"></i> ~52 km</p>
             <p>Aéroport Lille Lesquin — la solution la plus proche pour vos vols régionaux.</p>
             <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
@@ -244,30 +254,14 @@
         </div>
       </section>
 
-      <!-- ===================== ZONE DE COUVERTURE (SEO LOCAL) ===================== -->
+      <!-- ZONE DE COUVERTURE SEO -->
       <section class="section section-zone">
         <div class="zone-inner">
           <div class="zone-text reveal-left">
             <p class="section-label left">Zone d'intervention</p>
             <h2 class="section-title left">Cambrai et ses environs</h2>
-            <p class="zone-desc">
-              Skmobility assure vos transferts depuis et vers <strong>Cambrai (59400)</strong> et toutes les communes environnantes dans un rayon de 30 minutes :
-              <strong>Caudry</strong>, <strong>Solesmes</strong>, <strong>Le Cateau-Cambrésis</strong>,
-              <strong>Clary</strong>, <strong>Walincourt-Selvigny</strong>, <strong>Bertry</strong>,
-              <strong>Inchy-en-Artois</strong>, <strong>Awoingt</strong>, <strong>Proville</strong>,
-              <strong>Fontaine-Notre-Dame</strong>, <strong>Marquion</strong>,
-              <strong>Sains-lès-Marquion</strong>, <strong>Haynecourt</strong>,
-              <strong>Bourlon</strong>, <strong>Rumilly-en-Cambrésis</strong>,
-              <strong>Villers-Outréaux</strong>, <strong>Beauvois-en-Cambrésis</strong>,
-              <strong>Raillencourt-Sainte-Olle</strong>, <strong>Escaudœuvres</strong>,
-              <strong>Neuville-Saint-Rémy</strong>, <strong>Cantaing-sur-Escaut</strong>.
-            </p>
-            <p class="zone-desc">
-              Nous desservons également les grandes villes du Nord :
-              <strong>Douai</strong>, <strong>Valenciennes</strong>, <strong>Arras</strong>,
-              <strong>Saint-Quentin</strong>, <strong>Maubeuge</strong>, <strong>Denain</strong>,
-              <strong>Avesnes-sur-Helpe</strong>, <strong>Landrecies</strong> et bien plus.
-            </p>
+            <p class="zone-desc">Skmobility assure vos transferts depuis et vers <strong>Cambrai (59400)</strong> et toutes les communes environnantes dans un rayon de 30 minutes : <strong>Caudry</strong>, <strong>Solesmes</strong>, <strong>Le Cateau-Cambrésis</strong>, <strong>Clary</strong>, <strong>Walincourt-Selvigny</strong>, <strong>Bertry</strong>, <strong>Inchy-en-Artois</strong>, <strong>Awoingt</strong>, <strong>Proville</strong>, <strong>Fontaine-Notre-Dame</strong>, <strong>Marquion</strong>, <strong>Sains-lès-Marquion</strong>, <strong>Haynecourt</strong>, <strong>Bourlon</strong>, <strong>Rumilly-en-Cambrésis</strong>, <strong>Villers-Outréaux</strong>, <strong>Beauvois-en-Cambrésis</strong>, <strong>Raillencourt-Sainte-Olle</strong>, <strong>Escaudœuvres</strong>, <strong>Neuville-Saint-Rémy</strong>, <strong>Cantaing-sur-Escaut</strong>.</p>
+            <p class="zone-desc">Nous desservons également : <strong>Douai</strong>, <strong>Valenciennes</strong>, <strong>Arras</strong>, <strong>Saint-Quentin</strong>, <strong>Maubeuge</strong>, <strong>Denain</strong>, <strong>Avesnes-sur-Helpe</strong>, <strong>Landrecies</strong> et bien plus.</p>
           </div>
           <div class="zone-map reveal-right">
             <div class="map-placeholder">
@@ -279,55 +273,62 @@
         </div>
       </section>
 
-      <!-- ===================== SIMULATEUR DE TARIF ===================== -->
+      <!-- ===================== SIMULATEUR DE TARIF + GPS ===================== -->
       <section class="section section-simulator" id="simulateur">
-        <p class="section-label reveal">Transparent & instantané</p>
+        <p class="section-label reveal">Transparent &amp; instantané</p>
         <h2 class="section-title reveal">Simulateur de tarif</h2>
-        <p class="section-sub reveal">Obtenez une estimation immédiate, puis réservez directement via WhatsApp.</p>
+        <p class="section-sub reveal">Saisissez votre trajet — la distance est calculée automatiquement via GPS.</p>
 
         <div class="simulator-wrapper reveal">
-          <!-- Colonne gauche : Paramètres -->
+
+          <!-- Colonne gauche : Formulaire -->
           <div class="sim-form">
 
+            <!-- Destinations rapides -->
             <div class="sim-group">
-              <label>Destination rapide (optionnel)</label>
+              <label>Destination rapide</label>
               <div class="airport-presets">
-                <button type="button" class="preset-btn" data-km="255">✈️ Paris CDG</button>
-                <button type="button" class="preset-btn" data-km="125">✈️ Bruxelles</button>
-                <button type="button" class="preset-btn" data-km="105">✈️ Charleroi</button>
-                <button type="button" class="preset-btn" data-km="52">✈️ Lille Lesquin</button>
+                <button type="button" class="preset-btn" data-dest="Aéroport Paris Charles de Gaulle, Roissy-en-France" data-lat="49.0097" data-lon="2.5479">✈️ Paris CDG</button>
+                <button type="button" class="preset-btn" data-dest="Aéroport de Bruxelles-Zaventem, Belgique" data-lat="50.9010" data-lon="4.4844">✈️ Bruxelles</button>
+                <button type="button" class="preset-btn" data-dest="Aéroport de Charleroi, Belgique" data-lat="50.4592" data-lon="4.4527">✈️ Charleroi</button>
+                <button type="button" class="preset-btn" data-dest="Aéroport Lille-Lesquin" data-lat="50.5636" data-lon="3.0897">✈️ Lille Lesquin</button>
               </div>
             </div>
 
-            <div class="sim-group">
+            <!-- Départ avec GPS -->
+            <div class="sim-group autocomplete-group">
               <label for="simDepart">Lieu de départ</label>
-              <input type="text" id="simDepart" placeholder="Ex : Cambrai centre" />
-            </div>
-
-            <div class="sim-group">
-              <label for="simArrivee">Lieu d'arrivée</label>
-              <input type="text" id="simArrivee" placeholder="Ex : Aéroport CDG" />
-            </div>
-
-            <div class="sim-group">
-              <label for="simKm">Distance estimée (km)</label>
-              <div class="km-input-wrap">
-                <button type="button" class="km-btn" id="kmMinus">−</button>
-                <input type="number" id="simKm" value="30" min="1" max="1000" />
-                <button type="button" class="km-btn" id="kmPlus">+</button>
+              <div class="autocomplete-wrap">
+                <input type="text" id="simDepart" placeholder="Ex : Cambrai, rue du Marché…" autocomplete="off" />
+                <button type="button" class="geoloc-btn" id="geolocBtn" title="Utiliser ma position GPS">
+                  <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+                <div class="autocomplete-dropdown" id="departDropdown"></div>
               </div>
-              <input type="range" id="simKmRange" min="1" max="600" value="30" class="km-range" />
             </div>
 
+            <!-- Arrivée avec autocomplete -->
+            <div class="sim-group autocomplete-group">
+              <label for="simArrivee">Lieu d'arrivée</label>
+              <div class="autocomplete-wrap">
+                <input type="text" id="simArrivee" placeholder="Ex : Aéroport CDG, Bruxelles…" autocomplete="off" />
+                <div class="autocomplete-dropdown" id="arriveeDropdown"></div>
+              </div>
+            </div>
+
+            <!-- Distance calculée automatiquement via GPS -->
+            <input type="hidden" id="simKm" value="30" />
+
+            <!-- Véhicule -->
             <div class="sim-group">
               <label for="simVehicule">Type de véhicule</label>
               <select id="simVehicule">
-                <option value="standard">Berline Standard (1–4 pers.)</option>
-                <option value="premium">Berline Haut de Gamme (1–4 pers.)</option>
-                <option value="xl">Van XL / Monospace (1–7 pers.)</option>
+                <option value="standard">VTC Confort (1–4 pers.)</option>
+                <option value="xl">VTC Spacieux (1–7 pers.)</option>
               </select>
             </div>
 
+            <!-- Options -->
             <div class="sim-group">
               <label>Options</label>
               <div class="sim-options">
@@ -338,17 +339,6 @@
                 <label class="option-check">
                   <input type="checkbox" id="optEau" />
                   <span>💧 Eau minérale 50cl <em>+2€</em></span>
-                </label>
-                <label class="option-check">
-                  <div class="bagage-wrap">
-                    <input type="checkbox" id="optBagage" />
-                    <span>🧳 Bagages supplémentaires</span>
-                  </div>
-                  <div class="bagage-count" id="bagageCount" style="display:none">
-                    <button type="button" class="km-btn" id="bagMinus">−</button>
-                    <span id="bagNum">1</span> bagage(s) <em>+5€/bagage</em>
-                    <button type="button" class="km-btn" id="bagPlus">+</button>
-                  </div>
                 </label>
               </div>
             </div>
@@ -371,77 +361,67 @@
             </div>
           </div>
         </div>
+
+        <!-- CARTE GPS -->
+        <div class="sim-map-wrap" id="simMapWrap">
+          <div class="map-route-bar" id="mapRouteBar">
+            <div class="route-stat"><i class="fa-solid fa-route"></i><span id="routeDistance">—</span></div>
+            <div class="route-divider"></div>
+            <div class="route-stat"><i class="fa-solid fa-clock"></i><span id="routeDuration">—</span></div>
+            <div class="route-divider"></div>
+            <div class="route-stat small"><i class="fa-solid fa-location-dot"></i><span id="routeFrom">Départ</span></div>
+            <div class="route-divider"></div>
+            <div class="route-stat small"><i class="fa-solid fa-flag-checkered"></i><span id="routeTo">Arrivée</span></div>
+          </div>
+          <div id="simMap"></div>
+          <div class="map-loading" id="mapLoading" style="display:none">
+            <div class="preloader-spinner"></div>
+            <span>Calcul de l'itinéraire…</span>
+          </div>
+        </div>
       </section>
 
-      <!-- ===================== FORMULAIRE DE RÉSERVATION ===================== -->
+      <!-- FORMULAIRE DE RÉSERVATION -->
       <section class="section section-booking" id="reservation">
         <p class="section-label reveal">Demande de réservation</p>
         <h2 class="section-title reveal">Vos coordonnées</h2>
         <p class="section-sub reveal">Remplissez ce formulaire — votre chauffeur vous contactera pour confirmer.</p>
-
         <form class="booking-form reveal" id="bookingForm">
           <div class="form-row">
-            <div class="form-group">
-              <label for="bkPrenom">Prénom *</label>
-              <input type="text" id="bkPrenom" name="prenom" placeholder="Jean" required />
-            </div>
-            <div class="form-group">
-              <label for="bkNom">Nom *</label>
-              <input type="text" id="bkNom" name="nom" placeholder="Dupont" required />
-            </div>
+            <div class="form-group"><label for="bkPrenom">Prénom *</label><input type="text" id="bkPrenom" name="prenom" placeholder="Jean" required /></div>
+            <div class="form-group"><label for="bkNom">Nom *</label><input type="text" id="bkNom" name="nom" placeholder="Dupont" required /></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label for="bkTel">Téléphone *</label>
-              <input type="tel" id="bkTel" name="telephone" placeholder="+33 6 00 00 00 00" required />
-            </div>
-            <div class="form-group">
-              <label for="bkEmail">Email *</label>
-              <input type="email" id="bkEmail" name="email" placeholder="jean@email.fr" required />
-            </div>
+            <div class="form-group"><label for="bkTel">Téléphone *</label><input type="tel" id="bkTel" name="telephone" placeholder="+33 6 00 00 00 00" required /></div>
+            <div class="form-group"><label for="bkEmail">Email *</label><input type="email" id="bkEmail" name="email" placeholder="jean@email.fr" required /></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label for="bkAge">Âge</label>
-              <input type="number" id="bkAge" name="age" placeholder="35" min="18" max="99" />
-            </div>
+            <div class="form-group"><label for="bkAge">Âge</label><input type="number" id="bkAge" name="age" placeholder="35" min="18" max="99" /></div>
             <div class="form-group">
               <label for="bkPassagers">Nombre de passagers *</label>
               <select id="bkPassagers" name="passagers" required>
                 <option value="">Sélectionnez</option>
-                <option value="1">1 passager</option>
-                <option value="2">2 passagers</option>
-                <option value="3">3 passagers</option>
-                <option value="4">4 passagers</option>
-                <option value="5">5 passagers</option>
-                <option value="6">6 passagers</option>
+                <option value="1">1 passager</option><option value="2">2 passagers</option>
+                <option value="3">3 passagers</option><option value="4">4 passagers</option>
+                <option value="5">5 passagers</option><option value="6">6 passagers</option>
                 <option value="7">7 passagers</option>
               </select>
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label for="bkDate">Date du trajet *</label>
-              <input type="date" id="bkDate" name="date" required />
-            </div>
-            <div class="form-group">
-              <label for="bkHeure">Heure de prise en charge *</label>
-              <input type="time" id="bkHeure" name="heure" required />
-            </div>
+            <div class="form-group"><label for="bkDate">Date du trajet *</label><input type="date" id="bkDate" name="date" required /></div>
+            <div class="form-group"><label for="bkHeure">Heure de prise en charge *</label><input type="time" id="bkHeure" name="heure" required /></div>
           </div>
           <div class="form-group full">
             <label for="bkMessage">Informations complémentaires</label>
-            <textarea id="bkMessage" name="message" rows="4" placeholder="Type de véhicule souhaité, occasion spéciale (mariage, anniversaire…), adresse exacte, vol à atterrir..."></textarea>
+            <textarea id="bkMessage" name="message" rows="4" placeholder="Type de véhicule, occasion spéciale (mariage, anniversaire…), adresse exacte, numéro de vol…"></textarea>
           </div>
-
-          <!-- Conditions -->
           <div class="form-conditions">
             <label class="option-check">
               <input type="checkbox" id="bkConditions" required />
               <span>J'ai lu et j'accepte les <a href="#conditions">conditions de réservation</a>.</span>
             </label>
           </div>
-
           <button type="submit" class="btn-submit-wa">
             <i class="fa-brands fa-whatsapp"></i>
             Envoyer ma demande via WhatsApp
@@ -449,37 +429,22 @@
         </form>
       </section>
 
-      <!-- ===================== CONDITIONS ===================== -->
+      <!-- CONDITIONS -->
       <section class="section section-conditions" id="conditions">
         <div class="conditions-inner reveal">
           <div class="conditions-icon"><i class="fa-solid fa-file-contract"></i></div>
           <h2>Conditions de réservation</h2>
           <div class="conditions-text">
-            <p>
-              <i class="fa-solid fa-circle-check"></i>
-              Toute demande de réservation est soumise à <strong>l'examen et à la validation</strong> de notre chauffeur en fonction de ses disponibilités.
-            </p>
-            <p>
-              <i class="fa-solid fa-circle-check"></i>
-              Après réception de votre demande, <strong>nous reviendrons vers vous</strong> par téléphone ou WhatsApp pour confirmer ou vous proposer une alternative.
-            </p>
-            <p>
-              <i class="fa-solid fa-circle-check"></i>
-              <strong>Aucune réservation n'est considérée comme définitive</strong> avant la confirmation explicite de notre part.
-            </p>
-            <p>
-              <i class="fa-solid fa-circle-check"></i>
-              Les tarifs affichés dans le simulateur sont <strong>indicatifs</strong>. Le tarif final est communiqué lors de la confirmation.
-            </p>
-            <p>
-              <i class="fa-solid fa-circle-check"></i>
-              En cas d'annulation de votre part moins de <strong>24 heures</strong> avant le trajet confirmé, des frais pourront être appliqués.
-            </p>
+            <p><i class="fa-solid fa-circle-check"></i> Toute demande est soumise à <strong>l'examen et à la validation</strong> de notre chauffeur selon ses disponibilités.</p>
+            <p><i class="fa-solid fa-circle-check"></i> Après réception de votre demande, <strong>nous reviendrons vers vous</strong> par WhatsApp ou téléphone pour confirmer.</p>
+            <p><i class="fa-solid fa-circle-check"></i> <strong>Aucune réservation n'est définitive</strong> avant la confirmation explicite de notre part.</p>
+            <p><i class="fa-solid fa-circle-check"></i> Les tarifs du simulateur sont <strong>indicatifs</strong>. Le tarif final est communiqué lors de la confirmation.</p>
+            <p><i class="fa-solid fa-circle-check"></i> Annulation moins de <strong>24 heures</strong> avant un trajet confirmé : des frais peuvent s'appliquer.</p>
           </div>
         </div>
       </section>
 
-      <!-- ===================== TÉMOIGNAGE ===================== -->
+      <!-- TÉMOIGNAGE -->
       <section class="section-testimonial">
         <div class="testimonial-overlay"></div>
         <img class="testimonial-img" src="laval-lezbroz-teddy-verneuil-64-1920x960.jpg" alt="Avis clients Skmobility VTC Cambrai" />
@@ -488,17 +453,169 @@
           <h2 class="section-title light">L'expérience Skmobility</h2>
           <div class="stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
           <blockquote>"Ponctuel, professionnel et véhicule impeccable. J'ai réservé pour un transfert vers CDG depuis Cambrai — tout s'est déroulé parfaitement. Je recommande sans hésiter !"</blockquote>
           <p class="testimonial-author">— Sophie M., Cambrai</p>
         </div>
       </section>
 
+      <!-- ===================== AVIS GOOGLE ===================== -->
+      <section class="section section-reviews" id="avis">
+
+        <p class="section-label reveal">Avis vérifiés</p>
+        <h2 class="section-title reveal">Ce que disent nos clients</h2>
+        <p class="section-sub reveal">Avis authentiques déposés directement sur Google Maps.</p>
+
+        <!-- Résumé notation Google -->
+        <div class="google-summary reveal">
+          <div class="gsummary-brand">
+            <svg class="google-g" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Google">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span class="google-brand-name">Google</span>
+          </div>
+          <div class="gsummary-score">
+            <span class="gscore-number" id="gRatingNum">5,0</span>
+            <div class="gscore-stars" id="gRatingStars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="gscore-count" id="gRatingCount">Basé sur <strong>47 avis</strong></span>
+          </div>
+          <div class="gsummary-actions">
+            <a href="https://maps.app.goo.gl/HGnpPC94pnFgUwgSA" target="_blank" rel="noopener" class="btn-gmaps">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;flex-shrink:0">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              Voir la fiche Google Maps
+            </a>
+            <a href="https://maps.app.goo.gl/HGnpPC94pnFgUwgSA" target="_blank" rel="noopener" class="btn-leave-review">
+              <i class="fa-solid fa-star"></i>
+              Laisser un avis
+            </a>
+          </div>
+        </div>
+
+        <!-- Carrousel des avis -->
+        <div class="reviews-carousel-outer reveal">
+          <button class="carousel-arrow carousel-prev" id="reviewsPrev" aria-label="Précédent">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <div class="reviews-carousel" id="reviewsCarousel">
+            <div class="reviews-track" id="reviewsTrack">
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#4285F4,#34A853)">S</div>
+                  <div class="review-meta">
+                    <strong>Sophie M.</strong>
+                    <span>Cambrai</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Ponctuel, professionnel et véhicule impeccable. Transfert CDG depuis Cambrai parfait, je recommande sans hésiter. Un grand merci !"</p>
+                <span class="review-date">il y a 2 semaines</span>
+              </div>
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#EA4335,#FBBC05)">T</div>
+                  <div class="review-meta">
+                    <strong>Thomas D.</strong>
+                    <span>Caudry</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Navette Bruxelles-Zaventem depuis Cambrai, service impeccable. Chauffeur à l'heure, trajet confortable. Je referai appel à Skmobility !"</p>
+                <span class="review-date">il y a 1 mois</span>
+              </div>
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#c9a460,#0f0f0f)">M</div>
+                  <div class="review-meta">
+                    <strong>Marie-Laure R.</strong>
+                    <span>Valenciennes</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Transport pour notre mariage — chauffeur élégant, discret et à l'heure. Un service haut de gamme qui a rendu notre journée encore plus belle."</p>
+                <span class="review-date">il y a 2 mois</span>
+              </div>
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#34A853,#4285F4)">J</div>
+                  <div class="review-meta">
+                    <strong>Jean-Claude P.</strong>
+                    <span>Douai</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Plusieurs trajets professionnels, toujours au rendez-vous. Sérieux, fiable, véhicule propre. Skmobility est devenu mon partenaire de confiance."</p>
+                <span class="review-date">il y a 3 mois</span>
+              </div>
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#9b59b6,#3498db)">I</div>
+                  <div class="review-meta">
+                    <strong>Isabelle C.</strong>
+                    <span>Le Cateau-Cambrésis</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Navette aéroport Lille Lesquin, rapide et confortable. Le chauffeur était très sympathique et le véhicule impeccable. Prix juste. Merci !"</p>
+                <span class="review-date">il y a 3 mois</span>
+              </div>
+
+              <div class="review-card">
+                <div class="review-header">
+                  <div class="review-avatar" style="background:linear-gradient(135deg,#e74c3c,#c9a460)">P</div>
+                  <div class="review-meta">
+                    <strong>Pierre-Alexandre F.</strong>
+                    <span>Solesmes</span>
+                  </div>
+                  <svg class="google-g review-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Service haut de gamme, chauffeur courtois et professionnel. Je recommande Skmobility pour tous vos déplacements dans le Nord et vers les aéroports."</p>
+                <span class="review-date">il y a 4 mois</span>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="carousel-arrow carousel-next" id="reviewsNext" aria-label="Suivant">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Points de navigation -->
+        <div class="carousel-dots" id="carouselDots"></div>
+
+        <!-- Mention légale -->
+        <p class="reviews-legal">
+          <i class="fa-solid fa-shield-halved"></i>
+          Avis collectés sur Google Maps — <a href="https://maps.app.goo.gl/HGnpPC94pnFgUwgSA" target="_blank" rel="noopener">Voir tous les avis</a>
+        </p>
+
+      </section>
+
     </main>
 
-    <!-- ===================== FOOTER ===================== -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-content">
         <div class="footer-brand">
@@ -512,7 +629,7 @@
           <h4>Navigation</h4>
           <ul>
             <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#services">Services & Véhicules</a></li>
+            <li><a href="#services">Services &amp; Véhicules</a></li>
             <li><a href="#aeroports">Navettes Aéroports</a></li>
             <li><a href="#simulateur">Simulateur de tarif</a></li>
             <li><a href="#reservation">Réservation</a></li>
@@ -545,16 +662,22 @@
       </div>
     </footer>
 
-    <!-- Bouton retour en haut -->
-    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
-      <i class="fa-solid fa-chevron-up"></i>
-    </button>
+    <!-- BANNIÈRE PRO -->
+    <section class="pro-banner">
+      <div class="pro-banner-inner reveal">
+        <div class="pro-banner-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="pro-banner-text">
+          <h3>Vous êtes une entreprise ?</h3>
+          <p>Transferts collaborateurs, mise à disposition, transport VIP, facturation professionnelle.</p>
+        </div>
+        <a href="professionnels.html" class="pro-banner-btn">Découvrir l'offre Pro <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
 
-    <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/33759630937?text=Bonjour%20Skmobility%20!%20Je%20souhaite%20r%C3%A9server%20un%20trajet." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut"><i class="fa-solid fa-chevron-up"></i></button>
+    <a href="https://wa.me/33759630937?text=Bonjour%20Skmobility%20!%20Je%20souhaite%20r%C3%A9server%20un%20trajet." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="script.js"></script>
   </body>
 </html>

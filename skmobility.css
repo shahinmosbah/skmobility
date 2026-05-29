@@ -159,15 +159,111 @@ header {
 /* ===========================
    VEHICLES
 =========================== */
-.vehicles-grid { display:flex; justify-content:center; gap:26px; flex-wrap:wrap; margin-top:56px; }
-.vehicle-card { background:var(--gray-light); border-radius:var(--radius); padding:44px 30px; width:300px; text-align:center; border-top:3px solid var(--gold); box-shadow:var(--shadow); transition:transform .35s ease,box-shadow .35s ease; }
-.vehicle-card:hover { transform:translateY(-10px); box-shadow:0 22px 55px rgba(0,0,0,.13); }
-.vehicle-icon { font-size:40px; color:var(--gray-mid); margin-bottom:18px; transition:color var(--tr); }
-.vehicle-icon.gold { color:var(--gold); }
-.vehicle-card:hover .vehicle-icon { color:var(--gold); }
-.vehicle-card h3 { font-family:"Playfair Display",serif; font-size:20px; color:var(--dark); margin-bottom:12px; }
-.vehicle-card p { font-size:14px; color:var(--gray-mid); line-height:1.78; }
-.vehicle-price { display:inline-block; margin-top:16px; font-size:13px; font-weight:700; color:var(--gold); }
+.vehicles-grid {
+  display: flex; justify-content: center; gap: 24px;
+  flex-wrap: wrap; margin-top: 60px;
+}
+
+.vehicle-card {
+  position: relative; width: 320px; border-radius: 16px;
+  overflow: hidden; transition: transform .4s ease, box-shadow .4s ease;
+}
+.vehicle-card:not(.vehicle-locked):hover { transform: translateY(-12px); box-shadow: 0 28px 70px rgba(0,0,0,.16); }
+
+.vehicle-card-inner {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--white); border: 1px solid rgba(0,0,0,.07);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.07);
+}
+
+/* Ligne dorée animée en haut */
+.vehicle-card-inner::before {
+  content: ''; display: block; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 200% 100%; background-position: -100%;
+  transition: background-position .6s ease;
+}
+.vehicle-card:not(.vehicle-locked):hover .vehicle-card-inner::before {
+  background-position: 100%;
+}
+
+/* Badge */
+.vehicle-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: #22c55e;
+  padding: 10px 20px 0;
+}
+.vehicle-badge.badge-soon { color: var(--gray-mid); }
+
+/* Icône */
+.vehicle-icon-wrap {
+  display: flex; align-items: center; justify-content: center;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(201,164,96,.1); margin: 16px auto 0;
+  transition: background .3s ease, transform .3s ease;
+}
+.vehicle-icon-wrap i { font-size: 32px; color: var(--gold); }
+.vehicle-icon-wrap.locked i { color: var(--gray-mid); }
+.vehicle-card:not(.vehicle-locked):hover .vehicle-icon-wrap {
+  background: rgba(201,164,96,.2); transform: scale(1.08);
+}
+
+/* Corps */
+.vehicle-body { padding: 20px 26px 16px; flex: 1; }
+.vehicle-body h3 {
+  font-family: "Playfair Display", serif; font-size: 22px;
+  color: var(--dark); margin-bottom: 10px;
+}
+.vehicle-body p { font-size: 14px; color: var(--gray-mid); line-height: 1.8; }
+
+/* Footer */
+.vehicle-footer { padding: 0 26px 26px; display: flex; flex-direction: column; gap: 16px; }
+
+.vehicle-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.vehicle-tags span {
+  font-size: 11px; font-weight: 600; letter-spacing: .06em;
+  color: var(--dark); background: var(--gray-light);
+  padding: 4px 10px; border-radius: 20px;
+}
+
+.vehicle-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px 20px; border-radius: 6px;
+  background: var(--gold); color: var(--white);
+  font-family: "Raleway", sans-serif; font-size: 12px;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; border: none;
+  transition: background .25s ease, transform .25s ease;
+  cursor: pointer;
+}
+.vehicle-btn:hover { background: var(--gold-light); color: var(--dark); transform: translateY(-1px); }
+
+.btn-locked {
+  background: rgba(0,0,0,.06); color: var(--gray-mid);
+  cursor: not-allowed; font-size: 11px;
+}
+.btn-locked:hover { background: rgba(0,0,0,.06); color: var(--gray-mid); transform: none; }
+
+/* Carte verrouillée */
+.vehicle-locked .vehicle-card-inner { filter: grayscale(.4); }
+.vehicle-locked .vehicle-card-inner::before { background: none; }
+
+.vehicle-lock-overlay {
+  position: absolute; inset: 0; border-radius: 16px;
+  background: rgba(10,10,10,.52);
+  backdrop-filter: blur(2px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  opacity: 0; transition: opacity .35s ease; pointer-events: none;
+}
+.vehicle-lock-overlay i { font-size: 32px; color: var(--gold); }
+.vehicle-lock-overlay span {
+  font-size: 12px; font-weight: 700; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(255,255,255,.8);
+}
+.vehicle-locked:hover .vehicle-lock-overlay { opacity: 1; }
 
 /* ===========================
    EVENTS
@@ -304,6 +400,42 @@ header {
 .testimonial-author { color:var(--gold); font-weight:600; font-size:13px; letter-spacing:.12em; }
 
 /* ===========================
+   BANNIÈRE PRO
+=========================== */
+.pro-banner {
+  background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark-3) 100%);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 44px 60px;
+}
+.pro-banner-inner {
+  display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+  max-width: 1100px; margin: 0 auto;
+}
+.pro-banner-icon {
+  width: 64px; height: 64px; background: rgba(201,164,96,.12);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pro-banner-icon i { font-size: 26px; color: var(--gold); }
+.pro-banner-text { flex: 1; min-width: 200px; }
+.pro-banner-text h3 { font-family: "Playfair Display", serif; font-size: 20px; color: var(--white); margin-bottom: 6px; }
+.pro-banner-text p { font-size: 14px; color: rgba(255,255,255,.5); }
+.pro-banner-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: var(--dark);
+  font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 4px; text-decoration: none;
+  transition: background var(--tr), transform var(--tr); flex-shrink: 0; cursor: none;
+}
+.pro-banner-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+@media (max-width: 700px) {
+  .pro-banner { padding: 32px 24px; }
+  .pro-banner-inner { justify-content: center; text-align: center; }
+  .pro-banner-icon { display: none; }
+}
+
+/* ===========================
    BOUTON SCROLL TOP
 =========================== */
 .scroll-top { position:fixed; bottom:90px; right:28px; width:48px; height:48px; background:var(--dark-2); border:1px solid rgba(255,255,255,.1); border-radius:50%; color:var(--white); font-size:15px; cursor:pointer; z-index:300; opacity:0; transform:translateY(20px); transition:opacity .35s,transform .35s,background .25s; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); }
@@ -344,6 +476,221 @@ footer { background:var(--dark); }
 .footer-seo p { font-size:11px; color:rgba(255,255,255,.18); text-align:center; line-height:1.8; }
 .footer-bottom { border-top:1px solid rgba(255,255,255,.05); padding:18px 70px; text-align:center; }
 .footer-bottom p { font-size:11px; color:rgba(255,255,255,.25); }
+
+/* ===========================
+   SECTION AVIS GOOGLE
+=========================== */
+.section-reviews { background: var(--dark); overflow: hidden; }
+.section-reviews .section-label,
+.section-reviews .section-title,
+.section-reviews .section-sub { color: var(--white); }
+.section-reviews .section-title { color: var(--white); }
+.section-reviews .section-sub { color: rgba(255,255,255,.5); }
+
+/* Résumé notation */
+.google-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 28px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; padding: 32px 40px; max-width: 900px;
+  margin: 50px auto 60px;
+}
+
+.gsummary-brand { display: flex; align-items: center; gap: 10px; }
+.google-g { width: 36px; height: 36px; flex-shrink: 0; }
+.google-brand-name { font-family: "Playfair Display", serif; font-size: 22px; color: var(--white); font-weight: 600; letter-spacing: .02em; }
+
+.gsummary-score { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.gscore-number { font-family: "Playfair Display", serif; font-size: 52px; font-weight: 700; color: var(--white); line-height: 1; }
+.gscore-stars { display: flex; gap: 4px; }
+.gscore-stars i { font-size: 20px; color: #FBBC05; }
+.gscore-count { font-size: 13px; color: rgba(255,255,255,.45); }
+.gscore-count strong { color: rgba(255,255,255,.75); font-weight: 600; }
+
+.gsummary-actions { display: flex; flex-direction: column; gap: 12px; }
+.btn-gmaps, .btn-leave-review {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 6px; font-size: 13px;
+  font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: transform .25s, opacity .25s;
+  cursor: none; white-space: nowrap;
+}
+.btn-gmaps { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: var(--white); }
+.btn-gmaps:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+.btn-leave-review { background: #FBBC05; color: var(--dark); }
+.btn-leave-review:hover { background: #ffd33d; transform: translateY(-2px); }
+.btn-leave-review i { font-size: 14px; }
+
+/* Carrousel */
+.reviews-carousel-outer {
+  position: relative; display: flex; align-items: center;
+  gap: 16px; max-width: 1200px; margin: 0 auto;
+}
+
+.reviews-carousel { overflow: hidden; flex: 1; }
+
+.reviews-track {
+  display: flex; gap: 20px;
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+
+/* Carte avis */
+.review-card {
+  flex: 0 0 calc(33.333% - 14px); min-width: 0;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px; padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: background .3s ease, border-color .3s ease, transform .3s ease;
+}
+.review-card:hover { background: rgba(255,255,255,.08); border-color: rgba(201,164,96,.3); transform: translateY(-4px); }
+
+.review-header { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: var(--white);
+  font-family: "Playfair Display", serif;
+}
+.review-meta { flex: 1; min-width: 0; }
+.review-meta strong { display: block; font-size: 14px; color: var(--white); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.review-meta span { font-size: 11px; color: rgba(255,255,255,.4); }
+.review-g { width: 20px; height: 20px; flex-shrink: 0; }
+
+.review-stars { display: flex; gap: 3px; }
+.review-stars i { font-size: 13px; color: #FBBC05; }
+
+.review-text { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.75; flex: 1; font-style: italic; }
+.review-date { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .05em; }
+
+/* Flèches carrousel */
+.carousel-arrow {
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s, color .25s, transform .25s;
+}
+.carousel-arrow:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); transform: scale(1.08); }
+.carousel-arrow:disabled { opacity: .25; cursor: not-allowed; }
+.carousel-arrow:disabled:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.12); transform: none; }
+
+/* Dots */
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.2); border: none;
+  cursor: pointer; transition: background .3s, width .3s;
+  padding: 0;
+}
+.carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+/* Mention légale */
+.reviews-legal {
+  text-align: center; font-size: 12px; color: rgba(255,255,255,.25);
+  margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.reviews-legal i { color: rgba(255,255,255,.3); }
+.reviews-legal a { color: rgba(255,255,255,.4); text-decoration: underline; transition: color var(--tr); cursor: none; }
+.reviews-legal a:hover { color: var(--gold); }
+
+/* Responsive carrousel */
+@media (max-width: 900px) {
+  .review-card { flex: 0 0 calc(50% - 10px); }
+  .google-summary { padding: 24px 20px; }
+  .gsummary-actions { flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 600px) {
+  .review-card { flex: 0 0 100%; }
+  .gscore-number { font-size: 42px; }
+  .carousel-arrow { display: none; }
+  .reviews-carousel-outer { flex-direction: column; }
+}
+
+/* ===========================
+   AUTOCOMPLETE
+=========================== */
+.autocomplete-group { position: relative; }
+.autocomplete-wrap { position: relative; }
+.autocomplete-wrap input { padding-right: 46px; }
+.geoloc-btn {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: var(--gold); font-size: 17px;
+  cursor: pointer; padding: 4px; transition: color var(--tr), transform .2s;
+}
+.geoloc-btn:hover { color: var(--gold-light); transform: translateY(-50%) scale(1.2); }
+.geoloc-btn.loading { animation: spin .7s linear infinite; }
+
+.autocomplete-dropdown {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: var(--white); border: 1.5px solid rgba(0,0,0,.1);
+  border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,.14);
+  z-index: 600; overflow: hidden; max-height: 280px; overflow-y: auto;
+}
+.autocomplete-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px; cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  transition: background var(--tr);
+}
+.autocomplete-item:last-child { border-bottom: none; }
+.autocomplete-item:hover, .autocomplete-item.active { background: rgba(201,164,96,.1); }
+.autocomplete-item i { color: var(--gold); margin-top: 3px; font-size: 14px; flex-shrink: 0; width: 16px; }
+.autocomplete-item > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.autocomplete-item strong { font-size: 13px; color: var(--dark); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.autocomplete-item span { font-size: 11px; color: var(--gray-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.autocomplete-item mark { background: rgba(201,164,96,.3); color: var(--dark); border-radius: 2px; padding: 0 1px; font-style: normal; }
+.autocomplete-loading { padding: 14px 16px; text-align: center; font-size: 13px; color: var(--gray-mid); display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+.km-auto-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: none;
+  color: var(--gold); background: rgba(201,164,96,.12);
+  padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle;
+}
+
+/* ===========================
+   CARTE GPS
+=========================== */
+.sim-map-wrap {
+  position: relative; margin-top: 36px;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 12px 50px rgba(0,0,0,.12);
+}
+#simMap { height: 420px; width: 100%; }
+
+/* Override Leaflet pour thème sombre */
+.leaflet-control-attribution { background: rgba(0,0,0,.6) !important; color: rgba(255,255,255,.5) !important; }
+.leaflet-control-attribution a { color: rgba(255,255,255,.5) !important; }
+.leaflet-control-zoom a { background: var(--dark-2) !important; color: var(--white) !important; border-color: rgba(255,255,255,.1) !important; }
+.leaflet-control-zoom a:hover { background: var(--gold) !important; }
+
+.map-route-bar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+  background: var(--dark-2); padding: 14px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.route-stat { display: flex; align-items: center; gap: 10px; padding: 4px 20px; }
+.route-stat i { color: var(--gold); font-size: 15px; flex-shrink: 0; }
+.route-stat span { font-size: 13px; color: rgba(255,255,255,.7); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+.route-stat.small span { font-weight: 400; color: rgba(255,255,255,.5); font-size: 12px; max-width: 160px; }
+.route-divider { width: 1px; height: 28px; background: rgba(255,255,255,.08); flex-shrink: 0; }
+
+.map-loading {
+  position: absolute; inset: 0; background: rgba(0,0,0,.65);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; z-index: 500; backdrop-filter: blur(4px);
+}
+.map-loading span { color: rgba(255,255,255,.8); font-size: 13px; letter-spacing: .1em; }
+
+/* Marqueurs leaflet custom */
+.marker-pin {
+  width: 36px; height: 36px; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg); border: 3px solid var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+}
+.marker-pin.depart { background: #3b82f6; }
+.marker-pin.arrivee { background: var(--gold); }
 
 /* ===========================
    RESPONSIVE
