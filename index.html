@@ -1,178 +1,560 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link rel="icon" type="image/png" href="IMG_7756.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO PRIMAIRE -->
+    <title>Skmobility – Chauffeur VTC Cambrai 59400 | Navette Aéroport CDG, Bruxelles, Charleroi, Lille</title>
+    <meta name="description" content="Chauffeur privé VTC à Cambrai (59400) et dans tout le Nord. Navette aéroport Paris CDG, Bruxelles, Charleroi, Lille Lesquin. Mariage, anniversaire, baptême. Disponible 24h/24 7j/7. Réservation rapide via WhatsApp." />
+    <meta name="keywords" content="vtc cambrai, chauffeur privé cambrai, taxi cambrai, navette aéroport cambrai, vtc 59400, transport cambrai nord, chauffeur vtc nord, navette CDG cambrai, navette bruxelles cambrai, navette charleroi cambrai, navette lille lesquin cambrai, vtc caudry, vtc solesmes, vtc le cateau cambrésis, vtc douai, vtc valenciennes, vtc arras, vtc saint-quentin, vtc maubeuge, transport mariage cambrai, transport anniversaire cambrai, transport baptême cambrai, voiture avec chauffeur cambrai, berline haut de gamme cambrai, minibus cambrai" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Skmobility" />
+    <link rel="canonical" href="https://skmobility.fr/" />
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Skmobility – Chauffeur VTC Cambrai | Navettes Aéroports" />
+    <meta property="og:description" content="Service VTC premium depuis Cambrai. Navettes CDG, Bruxelles, Charleroi, Lille. Mariages, événements. Réservez via WhatsApp." />
+    <meta property="og:image" content="portier.jpeg" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- SCHEMA.ORG LOCAL BUSINESS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": "Skmobility",
+      "description": "Service de chauffeur privé VTC à Cambrai et dans le Nord. Navettes aéroports, transferts longue distance, événements.",
+      "url": "https://skmobility.fr",
+      "telephone": "+33759630937",
+      "email": "hamzasekrafi32@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cambrai",
+        "addressLocality": "Cambrai",
+        "postalCode": "59400",
+        "addressRegion": "Hauts-de-France",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.1764,
+        "longitude": 3.2336
+      },
+      "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
+      "priceRange": "€€",
+      "areaServed": ["Cambrai", "Caudry", "Solesmes", "Douai", "Valenciennes", "Arras", "Maubeuge"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "47"
+      }
+    }
+    </script>
+
+    <!-- FONTS & ICONS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="IMG_7756.png" />
     <link rel="stylesheet" href="skmobility.css" />
-    <title>Skmobility - chauffeur VTC</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
   </head>
+
   <body>
-    <header>
-      <div class="logo">
-        <img src="IMG_7756.png" alt="Logo Skmobility" />
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <img class="preloader-logo" src="IMG_7756.png" alt="Skmobility chauffeur VTC Cambrai" />
+      <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- CURSEUR CUSTOM -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div class="notif-toast" id="notifToast">
+      <div class="notif-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="notif-body">
+        <strong>Disponible maintenant</strong>
+        <span>Envoyez votre demande — nous revenons vers vous rapidement.</span>
       </div>
+      <button class="notif-close" id="notifClose" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- HEADER -->
+    <header id="header">
+      <a href="index.html" class="logo">
+        <img src="IMG_7756.png" alt="Skmobility logo" />
+      </a>
       <nav class="menu">
         <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#aeroports">Aéroports</a></li>
+          <li><a href="#simulateur">Tarifs</a></li>
+          <li><a href="#reservation">Réserver</a></li>
         </ul>
       </nav>
+      <div class="header-actions">
+        <a href="tel:+33759630937" class="btn-tel"><i class="fa-solid fa-phone"></i> 07 59 63 09 37</a>
+        <a href="#reservation" class="btn-reserve">Réserver</a>
+      </div>
     </header>
 
     <main>
-      <img class="image_main" src="portier.jpeg" alt="Image d'accueil" />
-      <p style="font-size: larger">NOS AVANTAGES</p>
 
-      <div class="blocs_gris">
-        <div class="bloc1_gris">
-          <div class="icones">
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <h2>Service Clientèle 24/7</h2>
-          <p>
-            Je suis constamment à votre disposition pour répondre à toutes vos
-            demandes et vous fournir un service clientèle d'une qualité
-            exceptionnelle.
-          </p>
-        </div>
-        <div class="bloc2_gris">
-          <div class="icones">
-            <i class="fa-solid fa-file"></i>
-          </div>
-          <h2>Expérience et Qualification</h2>
-          <p>
-            Je vous assure des trajets en toute expertise, pour répondre à vos
-            besoins en toutes situations.
-          </p>
-        </div>
-        <div class="bloc3_gris">
-          <div class="icones">
-            <i class="fa-solid fa-car-side"></i>
-          </div>
-          <h2>Confort Supérieur</h2>
-          <p>
-            À votre disposition un véhicule haut de gamme, confortable et
-            agréable pour garantir un trajet à vos attentes.
-          </p>
-        </div>
-      </div>
-      <br />
-      <br />
-      <br />
-      <div class="a-propos">
-        <div class="texte_apropos">
-          <p style="font-size: 32px">A propos de nous ?</p>
-          <i>
-            Bienvenue chez Skmobility, votre partenaire de confiance pour tous
-            vos déplacements dans la région Nord. Nous vous proposons une gamme
-            complète de services de transport avec chauffeur, incluant les
-            transferts vers les aéroports et les gares, les trajets longue
-            distance, ainsi que des solutions flexibles adaptées à chacun de vos
-            besoins. Notre équipe expérimentée est à votre service pour vous
-            garantir un voyage sécurisé, confortable et ponctuel, que ce soit
-            pour un déplacement professionnel ou personnel. Anticipez vos
-            trajets avec Skmobility et profitez d'un service haut de gamme,
-            fiable et réactif, qui transformera vos déplacements en véritables
-            moments de sérénité.
-          </i>
-        </div>
-        <div class="image-apropos">
-          <div class="image-apropos1">
-            <img src="ROYAL DRIVEN.jpeg" alt="Service de nuit" />
-          </div>
-          <div class="image-apropos2">
-            <img
-              src="Late Night Private Transfer Service Cape Town.jpeg"
-              alt="Service royal"
-            />
+      <!-- ===================== HERO ===================== -->
+      <section class="hero" id="accueil">
+        <div class="hero-overlay"></div>
+        <!-- Ajoutez hero-video.mp4 dans ce dossier pour activer la vidéo -->
+        <video class="hero-video" autoplay muted loop playsinline poster="portier.jpeg">
+          <source src="hero-video.mp4" type="video/mp4" />
+        </video>
+        <img class="hero-img-fallback" src="portier.jpeg" alt="Chauffeur VTC Cambrai Skmobility" />
+        <div class="hero-content">
+          <p class="hero-label">Cambrai · Nord · 59400</p>
+          <h1>Votre chauffeur VTC<br />à Cambrai et dans tout le Nord</h1>
+          <p class="hero-sub">Transferts aéroports, mariages, événements — confort premium, 24h/24 7j/7</p>
+          <div class="hero-btns">
+            <a href="#simulateur" class="btn-cta">Simuler un tarif</a>
+            <a href="https://wa.me/33759630937?text=Bonjour%20Skmobility%20!%20Je%20souhaite%20r%C3%A9server%20un%20trajet." class="btn-wa" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
           </div>
         </div>
-      </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <p style="font-size: larger">NOS SERVICES</p>
-      <p style="font-size: 32px">
-        Laissez-nous vous guider lors de vos voyages
-      </p>
+        <div class="scroll-indicator">
+          <span>Découvrir</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </section>
 
-      <div class="blocs_noirs">
-        <div class="bloc1_noir">
-          <div class="icones">
-            <i class="fa-solid fa-plane"></i>
-          </div>
-          <h2>Transfert aéroport</h2>
-          <p>
-            Service de transport vers et depuis les aéroports, assuré par nos
-            soins.
-          </p>
+      <!-- ===================== STATS ===================== -->
+      <section class="section-stats">
+        <div class="stat reveal" data-delay="0">
+          <div class="stat-value"><span class="stat-number" data-count="500">0</span><span class="stat-suffix">+</span></div>
+          <p>Trajets réalisés</p>
         </div>
-        <div class="bloc2_noir">
-          <div class="icones">
-            <i class="fa-solid fa-train"></i>
-          </div>
-          <h2>Transferts gares</h2>
-          <p>
-            Des trajets sécurisés et confortables depuis et vers les gares, avec
-            notre sens du confort.
-          </p>
+        <div class="stat reveal" data-delay="1">
+          <div class="stat-value"><span class="stat-number" data-count="5">0</span><span class="stat-suffix">★</span></div>
+          <p>Note moyenne</p>
         </div>
-        <div class="bloc3_noir">
-          <div class="icones">
-            <i class="fa-solid fa-map-location-dot"></i>
-          </div>
-          <h2>Mise à disposition</h2>
-          <p>
-            Mise à disposition pour vos trajets d'affaires ou de loisirs,
-            offrant une flexibilité totale pour chaque déplacement.
-          </p>
+        <div class="stat reveal" data-delay="2">
+          <div class="stat-value"><span class="stat-text">24/7</span></div>
+          <p>Disponibilité</p>
         </div>
-        <div class="bloc4_noir">
-          <div class="icones">
-            <i class="fa-solid fa-car"></i>
-          </div>
-          <h2>Longue distance</h2>
-          <p>
-            Notre service de transport longue distance fiable et professionnel,
-            garantissant des voyages en toute sérénité.
-          </p>
+        <div class="stat reveal" data-delay="3">
+          <div class="stat-value"><span class="stat-number" data-count="4">0</span></div>
+          <p>Aéroports desservis</p>
         </div>
-      </div>
+      </section>
 
-      <div class="image-paysage">
-        <img
-          src="laval-lezbroz-teddy-verneuil-64-1920x960.jpg"
-          alt="Image avec texte"
-        />
-        <div class="texte-sur-image">Expérience de mes clients</div>
-        <div class="stars">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
+      <!-- ===================== SERVICES ===================== -->
+      <section class="section" id="services">
+        <p class="section-label reveal">Ce que nous proposons</p>
+        <h2 class="section-title reveal">Nos véhicules & occasions</h2>
+        <p class="section-sub reveal">Nous nous adaptons à chaque demande — anniversaire, mariage, baptême, transport professionnel ou personnel.</p>
+
+        <!-- Véhicules -->
+        <div class="vehicles-grid">
+          <div class="vehicle-card reveal" data-delay="0">
+            <div class="vehicle-icon"><i class="fa-solid fa-car"></i></div>
+            <h3>Berline Standard</h3>
+            <p>Confortable et efficace pour vos trajets quotidiens et professionnels. Jusqu'à 4 passagers.</p>
+            <span class="vehicle-price">À partir de 1,80€/km</span>
+          </div>
+          <div class="vehicle-card reveal" data-delay="1">
+            <div class="vehicle-icon gold"><i class="fa-solid fa-car-side"></i></div>
+            <h3>Berline Haut de Gamme</h3>
+            <p>Mercedes, BMW ou équivalent. Pour vos événements et déplacements VIP. Jusqu'à 4 passagers.</p>
+            <span class="vehicle-price">À partir de 2,30€/km</span>
+          </div>
+          <div class="vehicle-card reveal" data-delay="2">
+            <div class="vehicle-icon"><i class="fa-solid fa-van-shuttle"></i></div>
+            <h3>Van XL / Monospace</h3>
+            <p>Idéal pour les groupes, familles et bagages volumineux. Jusqu'à 7 passagers.</p>
+            <span class="vehicle-price">À partir de 2,80€/km</span>
+          </div>
         </div>
-        <div class="commentaire-sur-image">
-          Expérience inégalée avec Skmobility ! Chauffeur d'une courtoisie
-          exemplaire et voyages toujours confortables à chaque réservation. Un
-          service qui dépasse toutes les attentes !
+
+        <!-- Occasions -->
+        <h2 class="section-title reveal" style="margin-top: 80px;">On s'adapte à votre événement</h2>
+        <p class="section-sub reveal">Que ce soit un anniversaire, un mariage, un baptême ou un déplacement d'affaires — nous personnalisons le service selon vos souhaits.</p>
+
+        <div class="events-grid">
+          <div class="event-card reveal" data-delay="0">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <h3>Mariage</h3>
+            <p>Décoration, ponctualité et discrétion pour votre grand jour.</p>
+          </div>
+          <div class="event-card reveal" data-delay="1">
+            <i class="fa-solid fa-cake-candles"></i>
+            <h3>Anniversaire</h3>
+            <p>Arrivée en grande classe pour fêter vos moments inoubliables.</p>
+          </div>
+          <div class="event-card reveal" data-delay="2">
+            <i class="fa-solid fa-baby"></i>
+            <h3>Baptême</h3>
+            <p>Transport familial confortable et sécurisé pour toute la famille.</p>
+          </div>
+          <div class="event-card reveal" data-delay="3">
+            <i class="fa-solid fa-briefcase"></i>
+            <h3>Professionnel</h3>
+            <p>Rendez-vous d'affaires, séminaires, mise à disposition journée.</p>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ===================== AÉROPORTS ===================== -->
+      <section class="section section-dark" id="aeroports">
+        <p class="section-label reveal">Depuis Cambrai (59400)</p>
+        <h2 class="section-title light reveal">Navettes aéroports</h2>
+        <p class="section-sub light reveal">Transferts ponctuels et confortables vers les 4 principaux aéroports. Prise en charge à domicile.</p>
+
+        <div class="airports-grid">
+          <div class="airport-card reveal" data-delay="0">
+            <div class="airport-flag">🇫🇷</div>
+            <h3>Paris CDG</h3>
+            <p class="airport-distance"><i class="fa-solid fa-route"></i> ~255 km</p>
+            <p>Aéroport Charles-de-Gaulle — Liaison directe depuis Cambrai et le 59.</p>
+            <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
+          </div>
+          <div class="airport-card reveal" data-delay="1">
+            <div class="airport-flag">🇧🇪</div>
+            <h3>Bruxelles-Zaventem</h3>
+            <p class="airport-distance"><i class="fa-solid fa-route"></i> ~125 km</p>
+            <p>Aéroport international de Bruxelles — idéal pour les vols en Belgique et Europe.</p>
+            <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
+          </div>
+          <div class="airport-card reveal" data-delay="2">
+            <div class="airport-flag">🇧🇪</div>
+            <h3>Charleroi</h3>
+            <p class="airport-distance"><i class="fa-solid fa-route"></i> ~105 km</p>
+            <p>Brussels South Charleroi Airport — vols low-cost au départ du Hainaut.</p>
+            <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
+          </div>
+          <div class="airport-card reveal" data-delay="3">
+            <div class="airport-flag">🇫🇷</div>
+            <h3>Lille-Lesquin</h3>
+            <p class="airport-distance"><i class="fa-solid fa-route"></i> ~52 km</p>
+            <p>Aéroport Lille Lesquin — la solution la plus proche pour vos vols régionaux.</p>
+            <a href="#simulateur" class="btn-airport">Estimer le tarif</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ZONE DE COUVERTURE (SEO LOCAL) ===================== -->
+      <section class="section section-zone">
+        <div class="zone-inner">
+          <div class="zone-text reveal-left">
+            <p class="section-label left">Zone d'intervention</p>
+            <h2 class="section-title left">Cambrai et ses environs</h2>
+            <p class="zone-desc">
+              Skmobility assure vos transferts depuis et vers <strong>Cambrai (59400)</strong> et toutes les communes environnantes dans un rayon de 30 minutes :
+              <strong>Caudry</strong>, <strong>Solesmes</strong>, <strong>Le Cateau-Cambrésis</strong>,
+              <strong>Clary</strong>, <strong>Walincourt-Selvigny</strong>, <strong>Bertry</strong>,
+              <strong>Inchy-en-Artois</strong>, <strong>Awoingt</strong>, <strong>Proville</strong>,
+              <strong>Fontaine-Notre-Dame</strong>, <strong>Marquion</strong>,
+              <strong>Sains-lès-Marquion</strong>, <strong>Haynecourt</strong>,
+              <strong>Bourlon</strong>, <strong>Rumilly-en-Cambrésis</strong>,
+              <strong>Villers-Outréaux</strong>, <strong>Beauvois-en-Cambrésis</strong>,
+              <strong>Raillencourt-Sainte-Olle</strong>, <strong>Escaudœuvres</strong>,
+              <strong>Neuville-Saint-Rémy</strong>, <strong>Cantaing-sur-Escaut</strong>.
+            </p>
+            <p class="zone-desc">
+              Nous desservons également les grandes villes du Nord :
+              <strong>Douai</strong>, <strong>Valenciennes</strong>, <strong>Arras</strong>,
+              <strong>Saint-Quentin</strong>, <strong>Maubeuge</strong>, <strong>Denain</strong>,
+              <strong>Avesnes-sur-Helpe</strong>, <strong>Landrecies</strong> et bien plus.
+            </p>
+          </div>
+          <div class="zone-map reveal-right">
+            <div class="map-placeholder">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <p>Cambrai<br /><strong>59400</strong></p>
+              <span>Hauts-de-France</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SIMULATEUR DE TARIF ===================== -->
+      <section class="section section-simulator" id="simulateur">
+        <p class="section-label reveal">Transparent & instantané</p>
+        <h2 class="section-title reveal">Simulateur de tarif</h2>
+        <p class="section-sub reveal">Obtenez une estimation immédiate, puis réservez directement via WhatsApp.</p>
+
+        <div class="simulator-wrapper reveal">
+          <!-- Colonne gauche : Paramètres -->
+          <div class="sim-form">
+
+            <div class="sim-group">
+              <label>Destination rapide (optionnel)</label>
+              <div class="airport-presets">
+                <button type="button" class="preset-btn" data-km="255">✈️ Paris CDG</button>
+                <button type="button" class="preset-btn" data-km="125">✈️ Bruxelles</button>
+                <button type="button" class="preset-btn" data-km="105">✈️ Charleroi</button>
+                <button type="button" class="preset-btn" data-km="52">✈️ Lille Lesquin</button>
+              </div>
+            </div>
+
+            <div class="sim-group">
+              <label for="simDepart">Lieu de départ</label>
+              <input type="text" id="simDepart" placeholder="Ex : Cambrai centre" />
+            </div>
+
+            <div class="sim-group">
+              <label for="simArrivee">Lieu d'arrivée</label>
+              <input type="text" id="simArrivee" placeholder="Ex : Aéroport CDG" />
+            </div>
+
+            <div class="sim-group">
+              <label for="simKm">Distance estimée (km)</label>
+              <div class="km-input-wrap">
+                <button type="button" class="km-btn" id="kmMinus">−</button>
+                <input type="number" id="simKm" value="30" min="1" max="1000" />
+                <button type="button" class="km-btn" id="kmPlus">+</button>
+              </div>
+              <input type="range" id="simKmRange" min="1" max="600" value="30" class="km-range" />
+            </div>
+
+            <div class="sim-group">
+              <label for="simVehicule">Type de véhicule</label>
+              <select id="simVehicule">
+                <option value="standard">Berline Standard (1–4 pers.)</option>
+                <option value="premium">Berline Haut de Gamme (1–4 pers.)</option>
+                <option value="xl">Van XL / Monospace (1–7 pers.)</option>
+              </select>
+            </div>
+
+            <div class="sim-group">
+              <label>Options</label>
+              <div class="sim-options">
+                <label class="option-check">
+                  <input type="checkbox" id="optBebe" />
+                  <span>🪑 Siège bébé <em>+10€</em></span>
+                </label>
+                <label class="option-check">
+                  <input type="checkbox" id="optEau" />
+                  <span>💧 Eau minérale 50cl <em>+2€</em></span>
+                </label>
+                <label class="option-check">
+                  <div class="bagage-wrap">
+                    <input type="checkbox" id="optBagage" />
+                    <span>🧳 Bagages supplémentaires</span>
+                  </div>
+                  <div class="bagage-count" id="bagageCount" style="display:none">
+                    <button type="button" class="km-btn" id="bagMinus">−</button>
+                    <span id="bagNum">1</span> bagage(s) <em>+5€/bagage</em>
+                    <button type="button" class="km-btn" id="bagPlus">+</button>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colonne droite : Résultat -->
+          <div class="sim-result">
+            <div class="sim-price-box">
+              <p class="sim-price-label">Estimation</p>
+              <p class="sim-price-total" id="simTotal">— €</p>
+              <div class="sim-breakdown" id="simBreakdown"></div>
+              <p class="sim-disclaimer">Tarif indicatif. Le tarif définitif est confirmé lors de la réservation.</p>
+              <a href="#" class="btn-wa-sim" id="btnWhatsApp" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i> Réserver via WhatsApp
+              </a>
+            </div>
+            <div class="sim-note">
+              <i class="fa-solid fa-circle-info"></i>
+              <p>Après votre envoi, notre chauffeur examine votre demande et <strong>reviendra vers vous pour confirmer la réservation</strong>. Aucune réservation n'est définitive sans confirmation de notre part.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FORMULAIRE DE RÉSERVATION ===================== -->
+      <section class="section section-booking" id="reservation">
+        <p class="section-label reveal">Demande de réservation</p>
+        <h2 class="section-title reveal">Vos coordonnées</h2>
+        <p class="section-sub reveal">Remplissez ce formulaire — votre chauffeur vous contactera pour confirmer.</p>
+
+        <form class="booking-form reveal" id="bookingForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bkPrenom">Prénom *</label>
+              <input type="text" id="bkPrenom" name="prenom" placeholder="Jean" required />
+            </div>
+            <div class="form-group">
+              <label for="bkNom">Nom *</label>
+              <input type="text" id="bkNom" name="nom" placeholder="Dupont" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bkTel">Téléphone *</label>
+              <input type="tel" id="bkTel" name="telephone" placeholder="+33 6 00 00 00 00" required />
+            </div>
+            <div class="form-group">
+              <label for="bkEmail">Email *</label>
+              <input type="email" id="bkEmail" name="email" placeholder="jean@email.fr" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bkAge">Âge</label>
+              <input type="number" id="bkAge" name="age" placeholder="35" min="18" max="99" />
+            </div>
+            <div class="form-group">
+              <label for="bkPassagers">Nombre de passagers *</label>
+              <select id="bkPassagers" name="passagers" required>
+                <option value="">Sélectionnez</option>
+                <option value="1">1 passager</option>
+                <option value="2">2 passagers</option>
+                <option value="3">3 passagers</option>
+                <option value="4">4 passagers</option>
+                <option value="5">5 passagers</option>
+                <option value="6">6 passagers</option>
+                <option value="7">7 passagers</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bkDate">Date du trajet *</label>
+              <input type="date" id="bkDate" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="bkHeure">Heure de prise en charge *</label>
+              <input type="time" id="bkHeure" name="heure" required />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="bkMessage">Informations complémentaires</label>
+            <textarea id="bkMessage" name="message" rows="4" placeholder="Type de véhicule souhaité, occasion spéciale (mariage, anniversaire…), adresse exacte, vol à atterrir..."></textarea>
+          </div>
+
+          <!-- Conditions -->
+          <div class="form-conditions">
+            <label class="option-check">
+              <input type="checkbox" id="bkConditions" required />
+              <span>J'ai lu et j'accepte les <a href="#conditions">conditions de réservation</a>.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit-wa">
+            <i class="fa-brands fa-whatsapp"></i>
+            Envoyer ma demande via WhatsApp
+          </button>
+        </form>
+      </section>
+
+      <!-- ===================== CONDITIONS ===================== -->
+      <section class="section section-conditions" id="conditions">
+        <div class="conditions-inner reveal">
+          <div class="conditions-icon"><i class="fa-solid fa-file-contract"></i></div>
+          <h2>Conditions de réservation</h2>
+          <div class="conditions-text">
+            <p>
+              <i class="fa-solid fa-circle-check"></i>
+              Toute demande de réservation est soumise à <strong>l'examen et à la validation</strong> de notre chauffeur en fonction de ses disponibilités.
+            </p>
+            <p>
+              <i class="fa-solid fa-circle-check"></i>
+              Après réception de votre demande, <strong>nous reviendrons vers vous</strong> par téléphone ou WhatsApp pour confirmer ou vous proposer une alternative.
+            </p>
+            <p>
+              <i class="fa-solid fa-circle-check"></i>
+              <strong>Aucune réservation n'est considérée comme définitive</strong> avant la confirmation explicite de notre part.
+            </p>
+            <p>
+              <i class="fa-solid fa-circle-check"></i>
+              Les tarifs affichés dans le simulateur sont <strong>indicatifs</strong>. Le tarif final est communiqué lors de la confirmation.
+            </p>
+            <p>
+              <i class="fa-solid fa-circle-check"></i>
+              En cas d'annulation de votre part moins de <strong>24 heures</strong> avant le trajet confirmé, des frais pourront être appliqués.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TÉMOIGNAGE ===================== -->
+      <section class="section-testimonial">
+        <div class="testimonial-overlay"></div>
+        <img class="testimonial-img" src="laval-lezbroz-teddy-verneuil-64-1920x960.jpg" alt="Avis clients Skmobility VTC Cambrai" />
+        <div class="testimonial-content reveal">
+          <p class="section-label">Ils nous font confiance</p>
+          <h2 class="section-title light">L'expérience Skmobility</h2>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <blockquote>"Ponctuel, professionnel et véhicule impeccable. J'ai réservé pour un transfert vers CDG depuis Cambrai — tout s'est déroulé parfaitement. Je recommande sans hésiter !"</blockquote>
+          <p class="testimonial-author">— Sophie M., Cambrai</p>
+        </div>
+      </section>
+
     </main>
 
+    <!-- ===================== FOOTER ===================== -->
     <footer>
-      <br />
-      <p>
-        &copy; 2025 Skmobility. Tous droits réservés. | Mentions légales
-        disponibles sur demande.
-      </p>
-      <br />
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="IMG_7756.png" alt="Skmobility chauffeur VTC Cambrai" />
+          <p>Chauffeur privé VTC<br />Cambrai &amp; Nord — 59400</p>
+          <div class="footer-social">
+            <a href="https://wa.me/33759630937" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services & Véhicules</a></li>
+            <li><a href="#aeroports">Navettes Aéroports</a></li>
+            <li><a href="#simulateur">Simulateur de tarif</a></li>
+            <li><a href="#reservation">Réservation</a></li>
+            <li><a href="#conditions">Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-airports">
+          <h4>Aéroports desservis</h4>
+          <ul>
+            <li><i class="fa-solid fa-plane-departure"></i> Paris CDG (~255 km)</li>
+            <li><i class="fa-solid fa-plane-departure"></i> Bruxelles-Zaventem (~125 km)</li>
+            <li><i class="fa-solid fa-plane-departure"></i> Charleroi (~105 km)</li>
+            <li><i class="fa-solid fa-plane-departure"></i> Lille Lesquin (~52 km)</li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-phone"></i><a href="tel:+33759630937"> 07 59 63 09 37</a></p>
+          <p><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/33759630937" target="_blank" rel="noopener"> WhatsApp direct</a></p>
+          <p><i class="fa-solid fa-envelope"></i><a href="mailto:hamzasekrafi32@gmail.com"> hamzasekrafi32@gmail.com</a></p>
+          <p><i class="fa-solid fa-location-dot"></i> Cambrai 59400, Hauts-de-France</p>
+          <p class="footer-hours"><i class="fa-solid fa-clock"></i> Disponible 24h/24 · 7j/7</p>
+        </div>
+      </div>
+      <div class="footer-seo">
+        <p>VTC Cambrai · Chauffeur privé Cambrai · Taxi Cambrai · Navette aéroport CDG depuis Cambrai · Transport Caudry · VTC Solesmes · Chauffeur Le Cateau-Cambrésis · Transport Douai · VTC Valenciennes · Navette Bruxelles Cambrai · Navette Charleroi · Navette Lille Lesquin · Transport mariage Cambrai · Transport événement Nord 59</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Skmobility. Tous droits réservés. | Mentions légales disponibles sur demande.</p>
+      </div>
     </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Bouton WhatsApp flottant -->
+    <a href="https://wa.me/33759630937?text=Bonjour%20Skmobility%20!%20Je%20souhaite%20r%C3%A9server%20un%20trajet." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
   </body>
 </html>

@@ -4,14 +4,26 @@
     <link rel="icon" type="image/png" href="IMG_7756.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="contact.css" />
-    <title>Skmobility - chauffeur VTC</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Contact - Skmobility</title>
   </head>
   <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <img class="preloader-logo" src="IMG_7756.png" alt="Skmobility" />
+      <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Header -->
     <header>
       <div class="logo">
         <img src="IMG_7756.png" alt="Logo Skmobility" />
@@ -19,54 +31,153 @@
       <nav class="menu">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="contact.html" class="btn-reserve">Réserver</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <img class="image_main" src="portier.jpeg" alt="Image d'accueil" />
-      <p style="font-size: larger">NOUS CONTACTER</p>
-      <p style="font-size: 32px">Vous ne le regretterez pas</p>
-      <div class="blocs_noirs">
-        <div class="bloc1_noir">
-          <div class="icones">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-          <h2>Localisation</h2>
-          <p>Cambrai 59400, France</p>
+      <!-- Hero -->
+      <section class="hero-contact">
+        <div class="hero-overlay"></div>
+        <img class="hero-img" src="portier.jpeg" alt="Contact Skmobility" />
+        <div class="hero-content">
+          <p class="hero-label">Nous contacter</p>
+          <h1>Prêt pour votre prochain trajet ?</h1>
+          <p class="hero-sub">Contactez-nous pour toute demande de réservation ou de renseignement</p>
         </div>
-        <div class="bloc2_noir">
-          <div class="icones">
-            <i class="fa-solid fa-phone"></i>
+      </section>
+
+      <!-- Infos + Formulaire -->
+      <section class="section contact-section">
+        <div class="contact-wrapper">
+
+          <!-- Informations -->
+          <div class="contact-info reveal-left">
+            <p class="section-label">Informations</p>
+            <h2 class="section-title left">Restons en contact</h2>
+            <p class="contact-desc">
+              Notre équipe est disponible 7j/7, 24h/24 pour répondre à toutes vos questions et prendre en charge vos réservations avec réactivité.
+            </p>
+
+            <div class="info-cards">
+              <div class="info-card reveal" data-delay="0">
+                <div class="icone-wrap">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Localisation</h4>
+                  <p>Cambrai 59400, France</p>
+                </div>
+              </div>
+              <div class="info-card reveal" data-delay="1">
+                <div class="icone-wrap">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Téléphone</h4>
+                  <p><a href="tel:+33759630937">+33 7 59 63 09 37</a></p>
+                </div>
+              </div>
+              <div class="info-card reveal" data-delay="2">
+                <div class="icone-wrap">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Email</h4>
+                  <p><a href="mailto:hamzasekrafi32@gmail.com">hamzasekrafi32@gmail.com</a></p>
+                </div>
+              </div>
+              <div class="info-card reveal" data-delay="3">
+                <div class="icone-wrap">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Disponibilité</h4>
+                  <p>7j/7, 24h/24</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h2>Telephone</h2>
-          <p>+33 7 59 63 09 37</p>
-        </div>
-        <div class="bloc3_noir">
-          <div class="icones">
-            <i class="fa-solid fa-envelope"></i>
+
+          <!-- Formulaire -->
+          <div class="contact-form-wrap reveal-right">
+            <h3>Envoyer un message</h3>
+            <form class="contact-form" action="mailto:hamzasekrafi32@gmail.com" method="post" enctype="text/plain">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prenom">Prénom</label>
+                  <input type="text" id="prenom" name="prenom" placeholder="Jean" required />
+                </div>
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input type="text" id="nom" name="nom" placeholder="Dupont" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" required />
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 00 00 00 00" />
+              </div>
+              <div class="form-group">
+                <label for="trajet">Type de trajet</label>
+                <select id="trajet" name="trajet">
+                  <option value="">Sélectionnez un service</option>
+                  <option value="aeroport">Transfert aéroport</option>
+                  <option value="gare">Transfert gare</option>
+                  <option value="disposition">Mise à disposition</option>
+                  <option value="longue-distance">Longue distance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Précisez votre demande, date, heure, lieu de départ..."></textarea>
+              </div>
+              <button type="submit" class="btn-submit">
+                <i class="fa-solid fa-paper-plane"></i>
+                Envoyer la demande
+              </button>
+            </form>
           </div>
-          <h2>Email</h2>
-          <p>hamzasekrafi32@gmail.com</p>
+
         </div>
-        <div class="bloc4_noir">
-          <div class="icones">
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <h2>Réservation</h2>
-          <p>7j/7, 24h/24</p>
-        </div>
-      </div>
+      </section>
     </main>
 
     <footer>
-      <br />
-      <p>
-        &copy; 2025 Skmobility. Tous droits réservés. | Mentions légales
-        disponibles sur demande.
-      </p>
-      <br />
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="IMG_7756.png" alt="Logo Skmobility" />
+          <p>Votre chauffeur privé dans le Nord</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-phone"></i> +33 7 59 63 09 37</p>
+          <p><i class="fa-solid fa-envelope"></i> hamzasekrafi32@gmail.com</p>
+          <p><i class="fa-solid fa-location-dot"></i> Cambrai 59400, France</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Skmobility. Tous droits réservés. | Mentions légales disponibles sur demande.</p>
+      </div>
     </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
   </body>
 </html>
