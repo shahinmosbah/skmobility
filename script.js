@@ -99,16 +99,30 @@ let departMarker = null;
 let arriveeMarker = null;
 
 function initMap() {
-  if (map || !document.getElementById('simMap')) return;
-  map = L.map('simMap', { zoomControl: true, scrollWheelZoom: false });
+  if (map) return;
+  const container = document.getElementById('simMap');
+  if (!container) return;
 
-  // Tiles sombres CartoDB
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19
+  // Assure que le container a une hauteur avant l'init
+  container.style.height = '420px';
+
+  map = L.map('simMap', {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    attributionControl: true
+  });
+
+  // OSM standard (fiable partout, y compris en local)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
   }).addTo(map);
 
-  map.setView([50.1764, 3.2336], 10); // Centre Cambrai par défaut
+  map.setView([50.1764, 3.2336], 10);
+
+  // Forcer le recalcul de la taille après le rendu
+  setTimeout(() => { map.invalidateSize(true); }, 100);
+  setTimeout(() => { map.invalidateSize(true); }, 500);
 }
 
 function makeIcon(type) {
@@ -422,15 +436,17 @@ function updateWALink(p) {
 renderPrice();
 
 /* ==============================
-   INIT CARTE AU SCROLL
+   INIT CARTE — dès que le DOM est prêt
 ============================== */
-const mapWrap = document.getElementById('simMapWrap');
-if (mapWrap) {
-  const mapObs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) { initMap(); mapObs.disconnect(); }
-  }, { threshold: 0.1 });
-  mapObs.observe(mapWrap);
+// Init immédiate (pas d'IntersectionObserver — évite le problème de hauteur 0)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMap);
+} else {
+  initMap();
 }
+
+// Réinit si la fenêtre est redimensionnée
+window.addEventListener('resize', () => { if (map) map.invalidateSize(true); }, { passive: true });
 
 /* ==============================
    CARROUSEL AVIS GOOGLE
